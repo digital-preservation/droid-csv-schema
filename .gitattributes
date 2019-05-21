@@ -1,0 +1,9 @@
+# treat all text files as having Windows ending always
+* text eol-crlf
+
+#treat Word and Excel files as binary
+*.doc binary
+*.docx binary
+*.odt binary
+*.xls binary
+*.xlsx binary
