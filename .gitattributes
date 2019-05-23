@@ -7,3 +7,7 @@
 *.odt binary
 *.xls binary
 *.xlsx binary
+*.zip binary
+*.7z binary
+*.tar binary
+*.wim binary
