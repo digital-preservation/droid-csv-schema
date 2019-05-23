@@ -14,10 +14,10 @@ version 1.1
 | by examining the URI field, if the URI ends with a slash, we check just that |
 | the SHA256_HASH is empty. If the RESOURCE column from DROID were included in |
 | the output could use if($RESOURCE/is("folder") to test instead.              |
-| to run this you will need to replace "foldername" in the integrityCheck test |
+| to run this you will need to replace "files" in the integrityCheck test      |
 | with the name of the top level Folder in your DROID report. That is, if you  |
 | ran the report starting at, for example, C:\users\documents, replace         |
-| foldername with documents.                                                   |
+| files with documents.                                                        |
 |                                                                              |
 | We also need to skip files inside zips and other containers for this purpose |
 | as it is sufficient to check that the container itself is unchanged.         |
@@ -27,8 +27,8 @@ version 1.1
 \-----------------------------------------------------------------------------*/
 ID:
 PARENT_ID:
-URI: if(starts("zip:"),,fileExists integrityCheck("","foldername","includeFolder"))
-//replace "foldername" in integrityCheck with name of top level folder within DROID report (in quotes)
+URI: if((starts("zip:") or starts("sevenz:") or starts("tar:")),uri integrityCheck("","files","includeFolder"),fileExists integrityCheck("","files","includeFolder"))
+//replace "files" in integrityCheck with name of top level folder within your DROID report (in quotes)
 //Will probably need to add eg or starts("iso:") etc for each possible container type in the conditional
 FILE_PATH:
 NAME:
@@ -39,7 +39,7 @@ TYPE:
 EXT:
 LAST_MODIFIED:
 EXTENSION_MISMATCH:
-SHA256_HASH: if($URI/ends("/"),empty,checksum(file($FILE_PATH),"SHA-256")) //folders do not have a checksum
+SHA256_HASH: if($URI/ends("/"),empty,if($URI/starts("file:"),checksum(file($URI),"SHA-256"),notEmpty)) //folders do not have a checksum, and CSV validator cannot access files in containers
 FORMAT_COUNT:
 PUID:
 MIME_TYPE:
