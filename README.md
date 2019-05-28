@@ -1,0 +1,7 @@
+# droid-csv-schema
+## CSV Schema files for working with CSV files exported from DROID profiles
+This repo contains CSV Schema (.csvs) files for working with exports from the [DROID file format identification tool](http://www.nationalarchives.gov.uk/information-management/manage-information/preserving-digital-records/droid/). [dedupe_files_from_DROID_report.csvs](https://github.com/digital-preservation/droid-csv-schema/blob/master/dedupe_files_from_DROID_report.csvs) should be run against files like [DROID_report.csv](https://github.com/digital-preservation/droid-csv-schema/blob/master/DROID_report.csv) to look for duplicate files within a set of digtial material (ie files having the same checksum). [DROID_integrity_check.csvs](https://github.com/digital-preservation/droid-csv-schema/blob/master/DROID_integrity_check.csvs) is designed to be run regularly against files like [DROID_report_2.csv](https://github.com/digital-preservation/droid-csv-schema/blob/master/DROID_report_2.csv) to verify that files have not been changed at all, all files are present, and no files or folders have been added.
+
+DROID_report.csv was created from a DROID run which analysed files within "archive" containers such as .zip, whereas as DROID_report_2.csv did not look inside "archvies" as this causes difficulties with the fileIntegrity check mechanism in CSV Validator (and we can reasonably assume that if the checksum of the container is unchanged then nothing has happened to its contents either).
+
+More details will be given in a forthcoming blog post.
