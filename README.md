@@ -4,4 +4,6 @@ This repo contains CSV Schema (.csvs) files for working with exports from the [D
 
 DROID_report.csv was created from a DROID run which analysed files within "archive" containers such as .zip, whereas as DROID_report_2.csv did not look inside "archvies" as this causes difficulties with the fileIntegrity check mechanism in CSV Validator (and we can reasonably assume that if the checksum of the container is unchanged then nothing has happened to its contents either).
 
+the folder structure in [good/files](https://github.com/digital-preservation/droid-csv-schema/tree/master/good/files) should pass the file integrity check (when used with a suitable path substitution), but includes some duplicate files that would be flagged by the dedupe files schema, [bad/files](https://github.com/digital-preservation/droid-csv-schema/tree/master/bad/files) should fail the integrity check on several grounds.
+
 More details will be given in a forthcoming blog post.
