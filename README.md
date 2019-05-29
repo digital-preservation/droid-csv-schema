@@ -6,4 +6,4 @@ DROID_report.csv was created from a DROID run which analysed files within "archi
 
 the folder structure in [good/files](https://github.com/digital-preservation/droid-csv-schema/tree/master/good/files) should pass the file integrity check (when used with a suitable path substitution), but includes some duplicate files that would be flagged by the dedupe files schema, [bad/files](https://github.com/digital-preservation/droid-csv-schema/tree/master/bad/files) should fail the integrity check on several grounds.
 
-More details will be given in a forthcoming blog post.
+More details are given in this blog post, [DROID report as basis for collection integrity checks](https://openpreservation.org/blog/2019/05/28/droid-report-as-basis-for-collection-integrity-checks/).
