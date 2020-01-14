@@ -1,0 +1,42 @@
+version 1.1
+/*-----------------------------------------------------------------------------\
+| This schema is designed to run on a CSV exported from The National Archives' |
+| DROID file format identification tool profile.  It will report an error for  |
+| any files in a "blacklist" of unacceptable file formats (listed by PUID).    |
+| These are typically "system" files which are of low value for long-term      |
+| preservation, or may even be "dangerous" as they could contain thumbnails of |
+| content that has otherwise not been selected for preservation, such as with  |
+| thumbs.db which is automatically generated on Windows systems for folders    |
+| that contain images. The validator will report the line number at which a    |
+| blacklisted file format is detected within the DROID CSV report. Please note,|
+| these line numbers do not include the header row, so if viewing your CSV file|
+| in Excel or OpenOffice Calc you will need to add one to the reported line    |
+| number to find the relevant entry.                                           |
+|                                                                              |
+| Currently implements blacklist for thumbs.db ("fmt/682") and .ds_store       |
+| ("fmt/394") files. Currently, only the Windows XP version of thumbs.db can be|
+| identified fully by signature other versions will identify only as fmt/111,  |
+| the generic OLE2 Compound Document Format, so for that format additional     |
+| checking is done on the name thumbs.db                                       |
+|                                                                              |
+| Authors:                                                                     |
+| David Underdown, The National Archives                                       |
+\-----------------------------------------------------------------------------*/
+ID:
+PARENT_ID:
+URI: 
+FILE_PATH:
+NAME: if(is("thumbs.db"),$PUID/not("fmt/111")) @ignoreCase
+METHOD:
+STATUS:
+SIZE:
+TYPE:
+EXT:
+LAST_MODIFIED:
+EXTENSION_MISMATCH:
+SHA256_HASH: 
+FORMAT_COUNT:
+PUID: not("fmt/682") and not("fmt/394")
+MIME_TYPE:
+FORMAT_NAME:
+FORMAT_VERSION:
